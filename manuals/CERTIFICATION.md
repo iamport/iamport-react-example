@@ -1,18 +1,18 @@
 
 # 리액트에서 아임포트 휴대폰 본인인증 연동하기
 
-리액트 환경에서 아임포트로 휴대폰 본인인증 연동을 위한 안내입니다.
+리액트 환경에서 아임포트 휴대폰 본인인증 연동을 위한 안내입니다.
 
 # 1. 가맹점 식별하기
 
-`IMP` 객체의 `init` 함수의 인자에 `가맹점 식별코드`를 삽입합니다.
+`IMP` 객체의 `init` 함수 첫번째 인자에 `가맹점 식별코드`를 추가합니다.
 
 ```javascript
   const { IMP } = window;
   IMP.init('imp00000000'); // 'imp00000000' 대신 발급받은 가맹점 식별코드를 사용합니다.
 ```
 
-코드에서는 init()함수의 인자에 임의의 번호를 작성했습니다. 여러분의 관리자 대시보드에서 가맹점 식별번호를 확인 후 함수의 인자에 작성하면 됩니다.
+가맹점 식별코드는 <a href="https://admin.iamport.kr" target="_blank">아임포트 관리자 페이지</a> 로그인 후, 시스템 설정 > 내정보에서 확인하실 수 있습니다.
 
 # 2. 본인인증 데이터 정의하기
 
@@ -50,7 +50,7 @@
 
 # 4. 본인인증 창 호출하기
 
-본인인증 하기 버튼을 눌렀을떄 `IMP` 객체의 `certification` 함수를 호출해 본인인증 창을 호출합니다. `certification` 함수의 첫번째 인자로는 2-2에서 정의한 `본인인증 데이터`를, 두번째 인자로는 2-3에서 정의한 `콜백 함수`를 전달합니다.
+본인인증 하기 버튼을 눌렀을때 `IMP` 객체의 `certification` 함수를 호출해 본인인증 창을 호출합니다. `certification` 함수의 첫번째 인자로는 2에서 정의한 `본인인증 데이터`를, 두번째 인자로는 3에서 정의한 `콜백 함수`를 전달합니다.
 
 ```javascript
   import React from 'react';
@@ -99,7 +99,7 @@
 
 # 5. 리액트 네이티브 환경에 대응하기
 
-리액트 네이티브에서 해당 본인인증 화면을 웹뷰로 띄워 재사용하는 경우가 있습니다. 이 경우 본인인증 하기 버튼을 눌렀을때 본인인증 환경이 리액트 네이티브인지 판단해, `IMP.certification` 함수 호출이 아닌, **리액트 네이티브로 post message를 보내야** 합니다. 리액트 네이티브에 아임포트 리액트 네이티브 모듈을 설치한 후, 리액트로부터 post message를 받았을때 해당 본인인증 화면을 렌더링 하는 로직을 추가해야 합니다.
+리액트 네이티브에서 해당 본인인증 화면을 웹뷰로 띄워 재사용하는 경우가 있습니다. 이 경우 본인인증 하기 버튼을 눌렀을때 본인인증 환경이 리액트 네이티브인지 판단해, `IMP.certification` 함수 호출이 아닌, **리액트 네이티브로 post message를 보내야** 합니다. 리액트 네이티브에 아임포트 리액트 네이티브 모듈을 설치한 후, 리액트로부터 post message를 받으면 해당 본인인증 화면을 렌더링 하는 로직을 추가해야 합니다.
 
 ### 5-1. 리액트 네이티브로 post message 보내기
 
@@ -175,9 +175,10 @@
   }
 ```
 
-### 5-2. 리액트 네이티브에 아임포트 모듈 설치하기
+### 5-2. 리액트 네이티브에 아임포트 모듈 설치 및 설정하기
 
 - <a href="https://github.com/iamport/iamport-react-native/blob/master/INSTALL.md" target="_blank">아임포트 리액트 네이티브 모듈 설치하기</a>
+- <a href="https://github.com/iamport/iamport-react-native/blob/master/SETTING.md" target="_blank">아임포트 리액트 네이티브 모듈 설정하기</a>
 
 ### 5-3. 리액트 네이티브에서 post message를 받았을때 본인인증 화면 렌더링하기
 
@@ -219,7 +220,7 @@
 
 ### 5-4. 리액트 네이티브에 본인인증 화면 추가하기
 
-가맹점 식별코드와 본인인증 데이터를 쿼리에서 추출해 IMP.Payment에 prop 형태로 전달합니다. 이때 본인인증 후 실행될 로직을 작성한 콜백 함수도 함께 전달합니다. 콜백함수에서 본인인증 결과에 따라 로직을 다르게 작성할 수 있습니다. 아래는 본인인증 성공시 웹뷰를 띄운 Home으로 돌아가고, 본인인증 실패시 바로 이전 화면으로 돌아가는 예시입니다.
+`가맹점 식별코드`와 `본인인증 데이터`를 쿼리에서 추출해 `IMP.Payment`에 prop 형태로 전달합니다. 이때 본인인증 후 실행될 로직을 작성한 콜백 함수도 함께 전달합니다. 콜백함수에서 본인인증 결과에 따라 로직을 다르게 작성할 수 있습니다. 아래는 본인인증 성공시 웹뷰를 띄운 Home으로 돌아가고, 본인인증 실패시 바로 이전 화면으로 돌아가는 예시입니다.
 
 ```javascript
   import React from 'react';
@@ -230,7 +231,7 @@
     const userCode = navigation.getParam('userCode');
     const data = navigation.getParam('data');
     
-    /* [필수입력] 본인인증 후 실행될 콜백 함수 입력 */
+    /* 본인인증 후 실행될 콜백 함수 입력 */
     function callback(response) {
       const isSuccessed = getIsSuccessed(response);
       if (isSuccessed) {
@@ -278,14 +279,14 @@
 | 본인인증      | https://example.com/certification         |
 | 본인인증 완료  | https://example.com/certification/result  |
 
-위와 같은 경우, 본인인증 후 홈으로 렌더링 시 웹뷰의 도메인은 다시 `https://example.com`이 됩니다. 이를 `https://example.com/certification/result`로 리디렉션 하기 위해 아래와 같은 로직을 작성합니다.
+위와 같은 경우, 본인인증 후 홈으로 렌더링 시 웹뷰의 도메인은 다시 `https://example.com`이 됩니다. 이를 `https://example.com/certification/result`로 리디렉션 하기 위해 홈 컴포넌트에 아래와 같은 로직을 작성합니다.
 
 ```javascript
   import React, { useState, useEffect } from 'react';
   import WebView from 'react-native-webview';
   import queryString from 'query-string';
 
-  const domain = 'https://example.com'; // 가맹점 도메인 예시
+  const domain = 'https://example.com'; // 가맹점 도메인
   function Home({ navigation }) {
     const [uri, setUri] = useState(domain);
 
