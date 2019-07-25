@@ -1,7 +1,9 @@
 {
-  "name": "example-for-react",
+  "name": "iamport-react-example",
   "version": "0.1.0",
-  "private": true,
+  "description": "아임포트 리액트 결제 및 휴대폰 본인인증 연동 예제",
+  "author": "Solee Deedee Choi",
+  "keywords": ["iamport", "react", "payment", "certification"],
   "dependencies": {
     "antd": "^3.20.5",
     "customize-cra": "^0.4.1",
