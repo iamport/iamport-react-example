@@ -57,11 +57,11 @@
 
   function Certification() {
     function onClickCertification() {
-      /* 2-1. 가맹점 식별하기 */
+      /* 1. 가맹점 식별하기 */
       const { IMP } = window;
       IMP.init('imp00000000');
 
-      /* 2-2. 본인인증 데이터 정의하기 */
+      /* 2. 본인인증 데이터 정의하기 */
       const data = {
         merchant_uid: `mid_${new Date().getTime()}`  // 주문번호
         name: '홍길동',                                // 이름
@@ -69,11 +69,11 @@
         ...
       };
 
-      /* 2-4. 본인인증 창 호출하기 */
+      /* 4. 본인인증 창 호출하기 */
       IMP.certification(data, callback);
     }
 
-    /* 2-3. 콜백 함수 정의하기 */
+    /* 3. 콜백 함수 정의하기 */
     function callback(response) {
       const {
         success,
