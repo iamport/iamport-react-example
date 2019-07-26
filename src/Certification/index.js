@@ -1,11 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Form, Input, Button } from 'antd';
+import { withRouter } from 'react-router-dom';
 import { withUserAgent } from 'react-useragent';
+import queryString from 'query-string';
 
 const { Item } = Form;
 
-function Certification({ form, ua }) {
+function Certification({ history, form, ua }) {
   const { getFieldDecorator, validateFieldsAndScroll } = form;
 
   function handleSubmit(e) {
@@ -58,13 +60,8 @@ function Certification({ form, ua }) {
 
   /* 본인인증 후 콜백함수 */
   function callback(response) {
-    console.log(response);
-    const { success } = response;
-    if (success === 'false' || success === false) {
-
-    } else {
-
-    }
+    const query = queryString.stringify(response);
+    history.push(`/certification/result?${query}`);
   }
 
   function isReactNative() {
@@ -182,4 +179,4 @@ const FormContainer = styled(Form)`
 
 const CertificationForm = Form.create({ name: 'certification' })(Certification);
 
-export default withUserAgent(CertificationForm);
+export default withUserAgent(withRouter(CertificationForm));
