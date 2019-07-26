@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Form, Select, Icon, Input, Switch, Button } from 'antd';
+import { withRouter } from 'react-router-dom';
 import { withUserAgent } from 'react-useragent';
+import queryString from 'query-string';
 
 import {
   PGS,
@@ -13,7 +15,7 @@ import { getMethods, getQuotas } from './utils';
 const { Item } = Form;
 const { Option } = Select;
 
-function Payment({ form, ua }) {
+function Payment({ history, form, ua }) {
   const [methods, setMethods] = useState(METHODS_FOR_INICIS);
   const [quotas, setQuotas] = useState(QUOTAS_FOR_INICIS_AND_KCP);
   const [isQuotaRequired, setIsQuotaRequired] = useState(true);
@@ -93,13 +95,8 @@ function Payment({ form, ua }) {
   }
 
   function callback(response) {
-    console.log(response);
-    const { success } = response;
-    if (success === 'false' || success === false) {
-
-    } else {
-
-    }
+    const query = queryString.stringify(response);
+    history.push(`/payment/result?${query}`);
   }
 
   function onChangePg(value) {
@@ -399,4 +396,4 @@ const FormContainer = styled(Form)`
 
 const PaymentForm = Form.create({ name: 'payment' })(Payment);
 
-export default withUserAgent(PaymentForm);
+export default withUserAgent(withRouter(PaymentForm));
