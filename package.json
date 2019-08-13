@@ -1,14 +1,9 @@
 {
   "name": "iamport-react-example",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "아임포트 리액트 결제 및 휴대폰 본인인증 연동 예제",
   "author": "Solee Deedee Choi",
-  "keywords": [
-    "iamport",
-    "react",
-    "payment",
-    "certification"
-  ],
+  "keywords": ["iamport", "react", "payment", "certification", "webview", "react-native"],
   "dependencies": {
     "antd": "^3.20.5",
     "customize-cra": "^0.4.1",
@@ -22,6 +17,10 @@
     "react-scripts": "3.0.1",
     "react-useragent": "^1.1.2",
     "styled-components": "^4.3.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SoleeChoi/iamport-react-example"
   },
   "scripts": {
     "start": "react-app-rewired start",
