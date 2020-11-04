@@ -9,15 +9,15 @@
 ## 다운받기
 
 ```
-  $ git clone https://github.com/SoleeChoi/iamport-react-example
+$ git clone https://github.com/iamport/iamport-react-example
 ```
 
 ## 실행하기
 
 ```
-  $ cd ./iamport-react-example
-  $ npm install
-  $ npm start
+$ cd ./iamport-react-example
+$ npm install
+$ npm start
 ```
 
 ## 아임포트 라이브러리 추가하기
@@ -28,7 +28,7 @@
   <!-- jQuery -->
   <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
   <!-- iamport.payment.js -->
-  <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.7.js"></script>
+  <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
 ```
 
 ## 결제 연동하기
