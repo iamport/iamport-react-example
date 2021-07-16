@@ -1,4 +1,3 @@
-
 # 리액트에서 아임포트 결제 연동하기
 
 리액트 환경에서 아임포트 결제 연동을 위한 안내입니다.
@@ -22,7 +21,7 @@ IMP.init('imp00000000'); // 'imp00000000' 대신 발급받은 가맹점 식별�
 const data = {
   pg: 'html5_inicis',                           // PG사
   pay_method: 'card',                           // 결제수단
-  merchant_uid: `mid_${new Date().getTime()}`   // 주문번호
+  merchant_uid: `mid_${new Date().getTime()}`,   // 주문번호
   amount: 1000,                                 // 결제금액
   name: '아임포트 결제 데이터 분석',                  // 주문명
   buyer_name: '홍길동',                           // 구매자 이름
@@ -224,7 +223,7 @@ function Home({ navigation }) {
 
   return (
     <WebView
-      source={{ uri: '가맹점 도메인' }} 
+      source={{ uri: '가맹점 도메인' }}
       onMessage={onMessage}
       style={{ flex: 1 }}
       injectedJavascript={`(function() {
@@ -253,7 +252,7 @@ function Payment({ navigation }) {
   /* 가맹점 식별코드, 결제 데이터 추출 */
   const userCode = navigation.getParam('userCode');
   const data = navigation.getParam('data');
-  
+
   /* 결제 후 실행될 콜백 함수 입력 */
   function callback(response) {
     const isSuccessed = getIsSuccessed(response);
@@ -299,11 +298,11 @@ export default Payment;
 
 위의 예시에 따라 결제 후, 웹뷰를 띄운 Home으로 돌아갔을때 리디렉션을 위한 추가 로직을 작성해야 합니다. 아래와 같은 경우를 가정합니다.
 
-| 유형    | 도메인                                |
-| ------ | ----------------------------------- |
-| 홈      | https://example.com                 |
-| 결제    | https://example.com/payment         |
-| 결제완료 | https://example.com/payment/result  |
+| 유형     | 도메인                             |
+| -------- | ---------------------------------- |
+| 홈       | https://example.com                |
+| 결제     | https://example.com/payment        |
+| 결제완료 | https://example.com/payment/result |
 
 위와 같은 경우, 결제 후 홈으로 렌더링 시 웹뷰의 도메인은 다시 `https://example.com`이 됩니다. 이를 `https://example.com/payment/result`로 리디렉션 하기 위해 홈 컴포넌트에 아래와 같은 로직을 작성합니다.
 
@@ -324,7 +323,7 @@ function Home({ navigation }) {
       const { type } = query;
       if (type === 'payment') {
         /* 결제 후 렌더링 되었을 경우, https://example.com/payment/result로 리디렉션 시킨다 */
-        setUri(`${domain}/payment/result?${query}`);    
+        setUri(`${domain}/payment/result?${query}`);
       }
       ...
     }
@@ -340,7 +339,7 @@ function Home({ navigation }) {
 
   return (
     <WebView
-      source={{ uri }} 
+      source={{ uri }}
       onMessage={onMessage}
       style={{ flex: 1 }}
       injectedJavascript={`(function() {
