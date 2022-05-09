@@ -16,8 +16,8 @@ $ git clone https://github.com/iamport/iamport-react-example
 
 ```
 $ cd ./iamport-react-example
-$ npm install
-$ npm start
+$ yarn
+$ yarn start
 ```
 
 ## 아임포트 라이브러리 추가하기
