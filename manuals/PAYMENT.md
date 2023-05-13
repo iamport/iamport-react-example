@@ -22,7 +22,7 @@ IMP.init('imp00000000'); // 'imp00000000' 대신 발급받은 가맹점 식별�
 const data = {
   pg: 'html5_inicis',                           // PG사
   pay_method: 'card',                           // 결제수단
-  merchant_uid: `mid_${new Date().getTime()}`   // 주문번호
+  merchant_uid: `mid_${new Date().getTime()}`,  // 주문번호
   amount: 1000,                                 // 결제금액
   name: '아임포트 결제 데이터 분석',                  // 주문명
   buyer_name: '홍길동',                           // 구매자 이름
@@ -72,7 +72,7 @@ function Payment() {
     const data = {
       pg: 'html5_inicis',                           // PG사
       pay_method: 'card',                           // 결제수단
-      merchant_uid: `mid_${new Date().getTime()}`   // 주문번호
+      merchant_uid: `mid_${new Date().getTime()}`,  // 주문번호
       amount: 1000,                                 // 결제금액
       name: '아임포트 결제 데이터 분석',                  // 주문명
       buyer_name: '홍길동',                           // 구매자 이름
@@ -130,7 +130,7 @@ function Payment() {
     const data = {
       pg: 'html5_inicis',                           // PG사
       pay_method: 'card',                           // 결제수단
-      merchant_uid: `mid_${new Date().getTime()}`   // 주문번호
+      merchant_uid: `mid_${new Date().getTime()}`,  // 주문번호
       amount: 1000,                                 // 결제금액
       name: '아임포트 결제 데이터 분석',                  // 주문명
       buyer_name: '홍길동',                           // 구매자 이름
