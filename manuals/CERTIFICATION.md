@@ -20,7 +20,7 @@ IMP.init('imp00000000'); // 'imp00000000' 대신 발급받은 가맹점 식별�
 
 ```javascript
 const data = {
-  merchant_uid: `mid_${new Date().getTime()}`  // 주문번호
+  merchant_uid: `mid_${new Date().getTime()}`, // 주문번호
   company: '아임포트',                           // 회사명 또는 URL
   carrier: 'SKT',                              // 통신사
   name: '홍길동',                                // 이름
@@ -65,7 +65,7 @@ function callback(response) {
 
       /* 2. 본인인증 데이터 정의하기 */
       const data = {
-        merchant_uid: `mid_${new Date().getTime()}`  // 주문번호
+        merchant_uid: `mid_${new Date().getTime()}`, // 주문번호
         company: '아임포트',                           // 회사명 또는 URL
         carrier: 'SKT',                              // 통신사
         name: '홍길동',                                // 이름
@@ -118,7 +118,7 @@ function Certification() {
 
     /* 2. 본인인증 데이터 정의하기 */
     const data = {
-      merchant_uid: `mid_${new Date().getTime()}`  // 주문번호
+      merchant_uid: `mid_${new Date().getTime()}`, // 주문번호
       company: '아임포트',                           // 회사명 또는 URL
       carrier: 'SKT',                              // 통신사
       name: '홍길동',                                // 이름
