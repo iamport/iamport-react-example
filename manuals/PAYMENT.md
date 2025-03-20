@@ -285,7 +285,7 @@ function Payment({ navigation }) {
       loading={<Loading />}
       data={{
         ...data,
-        app_scheme: 'test',
+        app_scheme: 'test://',
       }}
       callback={callback}
     />
